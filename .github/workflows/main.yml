@@ -20,9 +20,13 @@ jobs:
       - name: Deploy to VPS
         run: |
           ssh -i key.pem -o StrictHostKeyChecking=no ${{ secrets.USER }}@${{ secrets.LOGIN }}<< 'EOF'
-          echo "hi"
-          # cd /var/www/your-app
-          # git pull origin main
-          # npm install --production
-          # pm2 restart all
-          # EOF
+          export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            nvm use 20
+            # node -v
+            # pwd
+          cd /var/www/
+          git pull origin master
+          npm install --production
+          npm run build
+          EOF
