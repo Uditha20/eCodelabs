@@ -20,7 +20,7 @@ jobs:
       - name: Deploy to VPS
         run: |
           ssh -i key.pem -o StrictHostKeyChecking=no ${{ secrets.USER }}@${{ secrets.LOGIN }}<< 'EOF'
-          echo"hi"
+          echo "hi"
           # cd /var/www/your-app
           # git pull origin main
           # npm install --production
