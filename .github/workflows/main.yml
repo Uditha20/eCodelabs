@@ -25,7 +25,7 @@ jobs:
             nvm use 20
             # node -v
             # pwd
-          cd /var/www/
+          cd /var/www/eCodelabs/
           git pull origin master
           npm install --production
           npm run build
