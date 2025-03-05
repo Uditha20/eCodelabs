@@ -3,7 +3,7 @@ name: Deploy MERN App
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   deploy:
@@ -19,8 +19,8 @@ jobs:
 
       - name: Deploy to VPS
         run: |
+          ssh -i key.pem -o StrictHostKeyChecking=no ${{ secrets.LOGIN }} << 'EOF'
           echo"hi"
-          # ssh -i key.pem -o StrictHostKeyChecking=no user@your-server-ip << 'EOF'
           # cd /var/www/your-app
           # git pull origin main
           # npm install --production
