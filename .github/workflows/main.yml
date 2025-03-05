@@ -1,0 +1,32 @@
+name: Deploy MERN App
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up SSH key
+        run: |
+          echo "${{ secrets.SERVER_SSH_KEY }}" > key.pem
+          chmod 600 key.pem
+
+      - name: Deploy to VPS
+        run: |
+          ssh -i key.pem -o StrictHostKeyChecking=no ${{ secrets.USER }}@${{ secrets.LOGIN }}<< 'EOF'
+          export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            nvm use 20
+            # node -v
+            # pwd
+          cd /var/www/eCodelabs/
+          git pull origin master
+          npm install --production
+          npm run build
+          EOF
