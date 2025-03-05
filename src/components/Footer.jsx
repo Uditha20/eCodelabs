@@ -3,19 +3,11 @@ import navLogo from "../assets/navlogo.png";
 function Footer() {
   return (
     <div className="container footer">
-    <div
-      className="row footer-outer d-flex justify-content-center align-items-center"
-    >
+    <div className="row footer-outer d-flex justify-content-center align-items-center">
       <div className="col-md-3">
         <div className="row">
-          <div
-            className="col-md-12 d-flex justify-content-center align-items-center"
-          >
-            <img
-              src={navLogo}
-              alt="Ecode Labs logo"
-              className="img-fluid"
-            />
+          <div className="col-md-12 d-flex justify-content-center align-items-center">
+            <img src={navLogo} alt="Ecode Labs logo" className="img-fluid" />
           </div>
         </div>
         <p className="text-center">
