@@ -1,0 +1,28 @@
+name: Deploy MERN App
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up SSH key
+        run: |
+          echo "${{ secrets.SERVER_SSH_KEY }}" > key.pem
+          chmod 600 key.pem
+
+      - name: Deploy to VPS
+        run: |
+          echo"hi"
+          # ssh -i key.pem -o StrictHostKeyChecking=no user@your-server-ip << 'EOF'
+          # cd /var/www/your-app
+          # git pull origin main
+          # npm install --production
+          # pm2 restart all
+          # EOF
